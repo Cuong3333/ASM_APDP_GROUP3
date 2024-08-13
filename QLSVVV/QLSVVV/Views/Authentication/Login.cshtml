@@ -1,0 +1,224 @@
+﻿@model User
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #000; /* Nền đen cho toàn bộ trang */
+            color: #0f0; /* Văn bản màu xanh lá */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background-color: #0f0; /* Nền xanh lá */
+            color: #000; /* Văn bản màu đen */
+            padding: 15px 20px;
+            box-shadow: 0 4px 6px rgba(0, 255, 0, 0.3);
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .navbar-brand {
+            font-size: 24px;
+            text-decoration: none;
+            color: #000;
+            font-weight: bold;
+        }
+
+        .navbar-menu {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+            .navbar-menu li {
+                margin-left: 20px;
+            }
+
+            .navbar-menu a {
+                color: #000;
+                text-decoration: none;
+                font-size: 18px;
+                transition: color 0.3s;
+            }
+
+                .navbar-menu a:hover {
+                    color: #fff;
+                }
+
+        .login-container {
+            background-color: #000; /* Nền đen cho container */
+            border-radius: 8px;
+            box-shadow: 0 8px 16px rgba(0, 255, 0, 0.3);
+            width: 400px;
+            margin: auto;
+            margin-top: 60px;
+            margin-bottom: 60px;
+            overflow: hidden;
+            padding: 30px;
+            border: 2px solid #0f0; /* Đường viền xanh lá */
+        }
+
+        .login-header {
+            background-color: #0f0; /* Nền xanh lá */
+            color: #000; /* Văn bản màu đen */
+            padding: 20px;
+            text-align: center;
+            border-bottom: 2px solid #000;
+        }
+
+        .login-form {
+            padding: 30px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 28px;
+            color: #000; /* Đảm bảo tiêu đề nổi bật */
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .control-label {
+            display: block;
+            font-weight: bold;
+            color: #0f0;
+            margin-bottom: 10px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #0f0;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: #000; /* Nền đen cho các ô nhập liệu */
+            color: #0f0; /* Văn bản xanh lá */
+            transition: border-color 0.3s;
+        }
+
+            .form-control:focus {
+                border-color: #00ff00;
+                outline: none;
+            }
+
+        .error-message {
+            color: #e74c3c;
+            font-size: 16px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .form-actions {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-info {
+            background-color: #0f0; /* Nền xanh lá */
+            color: #000; /* Văn bản màu đen */
+            margin-right: 15px;
+        }
+
+            .btn-info:hover {
+                background-color: #00ff00;
+            }
+
+        .btn-back {
+            text-decoration: none;
+            color: #0f0; /* Văn bản xanh lá */
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+            .btn-back:hover {
+                color: #00ff00;
+            }
+
+        .footer {
+            background-color: #000; /* Nền đen */
+            text-align: center;
+            padding: 15px 20px;
+            color: #0f0; /* Văn bản xanh lá */
+            margin-top: auto;
+            box-shadow: 0 -4px 6px rgba(0, 255, 0, 0.3);
+        }
+
+            .footer a {
+                color: #0f0;
+                text-decoration: none;
+                transition: color 0.3s;
+            }
+
+                .footer a:hover {
+                    color: #00ff00;
+                }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-container">
+            <a href="#" class="navbar-brand">ConsoleApp</a>
+            <ul class="navbar-menu">
+                <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                <li><a href="@Url.Action("Privacy", "Home")">About Us</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="login-container">
+        <div class="login-header">
+            <h1>Login</h1>
+        </div>
+        @using (Html.BeginForm("Login", "Authentication", FormMethod.Post))
+        {
+            <div class="form-group">
+                @Html.LabelFor(m => m.UserName, new { @class = "control-label" })
+                @Html.TextBoxFor(m => m.UserName, new { placeholder = "User Name", @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Password, new { @class = "control-label" })
+                @Html.PasswordFor(m => m.Password, new { placeholder = "Password", @class = "form-control" })
+            </div>
+            <div class="error-message">
+                @ViewBag.error
+            </div>
+            <div class="form-actions">
+                <input type="submit" value="Login" class="btn btn-info" />
+                <a href="@Url.Action("Index", "Home")" class="btn-back">Back</a>
+            </div>
+        }
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 - ConsoleApp - <a href="@Url.Action("Privacy", "Home")">Privacy</a></p>
+    </footer>
+</body>
+</html>

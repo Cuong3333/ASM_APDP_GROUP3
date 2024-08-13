@@ -1,0 +1,208 @@
+﻿@model IEnumerable<QLSVVV.Models.Class>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Class List</title>
+    <style>
+        body {
+            font-family: "Courier New", Courier, monospace;
+            background-color: #000;
+            color: #00ff00;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #003300;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+            border-radius: 8px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #00ff00;
+            margin-bottom: 20px;
+        }
+
+        .search-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .search-input {
+            width: 300px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #00ff00;
+            border-radius: 5px;
+            background-color: #000;
+            color: #00ff00;
+        }
+
+        .search-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #00ff00;
+            background-color: #003300;
+            border: 1px solid #00ff00;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+            .search-btn:hover {
+                background-color: #004400;
+            }
+
+        p a {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #00ff00;
+            background-color: #003300;
+            border: 1px solid #00ff00;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+            p a:hover {
+                background-color: #004400;
+            }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background-color: #003300;
+        }
+
+        table, th, td {
+            border: 1px solid #00ff00;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            color: #00ff00;
+        }
+
+        th {
+            background-color: #001a00;
+        }
+
+        tr:nth-child(even) {
+            background-color: #002200;
+        }
+
+        tr:hover {
+            background-color: #004400;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #00ff00;
+            text-decoration: none;
+            border: 1px solid #00ff00;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+            cursor: pointer;
+            background-color: #003300;
+        }
+
+        .btn-primary {
+            background-color: #003300;
+        }
+
+            .btn-primary:hover {
+                background-color: #004400;
+            }
+
+        .btn-sm {
+            font-size: 14px;
+            padding: 5px 10px;
+        }
+
+        a {
+            color: #00ff00;
+            text-decoration: none;
+        }
+
+            a:hover {
+                text-decoration: underline;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hello, you are Admin!</h1>
+
+        <!-- Search container -->
+        <div class="search-container">
+            <input type="text" id="searchInput" class="search-input" placeholder="Search by Name...">
+            <button onclick="search()" class="search-btn">Search</button>
+        </div>
+
+        <p>
+            <a asp-action="Create">Create New</a>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Name)</th>
+                    <th>@Html.DisplayNameFor(model => model.Major)</th>
+                    <th>@Html.DisplayNameFor(model => model.Lecturer)</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Major)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Lecturer)</td>
+                        <td>
+                            <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                            <a class="btn btn-sm btn-primary" asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                            <a class="btn btn-sm btn-primary" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <ul>
+            <li><a class="btn btn-sm btn-primary" asp-controller="Admin" asp-action="Index">Back to HomePage</a></li>
+        </ul>
+    </div>
+
+    <script>
+        function search() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+            table = document.querySelector(".table");
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0]; // Search in the first column (Name column)
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

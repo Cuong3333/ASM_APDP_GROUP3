@@ -1,0 +1,160 @@
+﻿@model IEnumerable<QLSVVV.Models.User>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<style>
+    body {
+        font-family: 'Courier New', Courier, monospace;
+        background-color: #000000;
+        color: #00ff00;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h1 {
+        color: #00ff00;
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 24px;
+    }
+
+    a {
+        color: #00ff00;
+        text-decoration: none;
+        font-size: 16px;
+    }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        background-color: #000000;
+        color: #00ff00;
+        border: 1px solid #00ff00;
+        border-radius: 4px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0, 255, 0, 0.3);
+    }
+
+        .table th, .table td {
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        .table th {
+            background-color: #000000;
+            border-bottom: 1px solid #00ff00;
+            color: #00ff00;
+        }
+
+        .table tbody tr:nth-child(even) {
+            background-color: #002200;
+        }
+
+        .table tbody tr:hover {
+            background-color: #004400;
+        }
+
+        .table td:last-child {
+            text-align: right;
+        }
+
+        .table a {
+            color: #00ff00;
+            text-decoration: none;
+            display: inline-block;
+            padding: 5px 10px;
+            border: 1px solid #00ff00;
+            border-radius: 4px;
+            font-size: 14px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+            .table a:hover {
+                background-color: #00ff00;
+                color: #000000;
+            }
+
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        color: #00ff00;
+        background-color: #000000;
+        border: 1px solid #00ff00;
+        border-radius: 5px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+        .btn:hover {
+            background-color: #00ff00;
+            color: #000000;
+        }
+
+    .back-link {
+        display: block;
+        text-align: center;
+        margin: 20px 0;
+        font-size: 18px;
+    }
+
+        .back-link a {
+            color: #00ff00;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid #00ff00;
+            border-radius: 5px;
+            background-color: #000000;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+            .back-link a:hover {
+                background-color: #00ff00;
+                color: #000000;
+            }
+</style>
+
+<h1>Admin Management</h1>
+
+<p>
+    <a class="btn" asp-action="Create">Create Account</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.UserName)</th>
+            <th>@Html.DisplayNameFor(model => model.Password)</th>
+            <th>@Html.DisplayNameFor(model => model.Role)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.UserName)</td>
+                <td>@Html.DisplayFor(modelItem => item.Password)</td>
+                <td>@Html.DisplayFor(modelItem => item.Role)</td>
+                <td>
+                    <a class="btn" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                    <a class="btn" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                    <a class="btn" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="back-link">
+    <a asp-controller="Admin" asp-action="Index">Back Admin Main</a>
+</div>

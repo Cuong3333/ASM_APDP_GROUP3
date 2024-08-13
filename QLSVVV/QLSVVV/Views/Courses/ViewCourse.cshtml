@@ -1,0 +1,187 @@
+﻿@model IEnumerable<QLSVVV.Models.Course>
+
+<style>
+    body {
+        font-family: Consolas, monospace;
+        background-color: #1b1b1b;
+        color: #00ff00;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        width: 80%;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #333;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        border-radius: 8px;
+        margin-top: 20px;
+    }
+
+    h1 {
+        text-align: center;
+        color: #00ff00;
+        margin-bottom: 20px;
+    }
+
+    .search-container {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .search-input {
+        width: 300px;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #00ff00;
+        border-radius: 5px;
+        background-color: #1b1b1b;
+        color: #00ff00;
+        margin-right: 10px;
+    }
+
+    .search-btn {
+        padding: 10px 20px;
+        font-size: 16px;
+        color: #fff;
+        background-color: #007bff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+        .search-btn:hover {
+            background-color: #0056b3;
+        }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+
+    table, th, td {
+        border: 1px solid #00ff00;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #333;
+        color: #00ff00;
+    }
+
+    tr:nth-child(even) {
+        background-color: #2b2b2b;
+    }
+
+    tr:hover {
+        background-color: #444;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 16px;
+        color: #fff;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        transition: background-color 0.3s, color 0.3s;
+        cursor: pointer;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+    .btn-sm {
+        font-size: 14px;
+        padding: 5px 10px;
+    }
+
+    .action-buttons {
+        text-align: center;
+        margin-top: 20px;
+    }
+</style>
+
+<div class="container">
+    <h1>Hello, Welcome to Course Homepage, Teacher!</h1>
+
+    <!-- Search container -->
+    <div class="search-container">
+        <input type="text" id="searchInput" class="search-input" placeholder="Search by Name...">
+        <button onclick="search()" class="search-btn">Search</button>
+    </div>
+
+    <!-- Course table -->
+    <table class="table">
+        <!-- Table header -->
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Class</th>
+                <th>Date Start</th>
+                <th>Date End</th>
+                <th>Major</th>
+                <th>Lecturer</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <!-- Table body -->
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td>@item.Class</td>
+                    <td>@item.DateStart?.ToString("d")</td> <!-- Display Date Start -->
+                    <td>@item.DateEnd?.ToString("d")</td> <!-- Display Date End -->
+                    <td>@item.Major</td>
+                    <td>@item.Lecturer</td>
+                    <td>
+                        <a asp-action="ViewStudentlnCourse" asp-route-id="@item.Id" class="btn btn-sm btn-primary">ViewCourse</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="action-buttons">
+        <a class="btn btn-primary" asp-controller="Teachers" asp-action="Index">Back to HomePage</a>
+    </div>
+</div>
+
+<script>
+    function search() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("searchInput");
+        filter = input.value.toUpperCase();
+        table = document.querySelector(".table");
+        tr = table.getElementsByTagName("tr");
+
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[1]; // Search in the second column (Name column)
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>

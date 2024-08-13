@@ -1,0 +1,209 @@
+﻿@model IEnumerable<QLSVVV.Models.Student>
+
+<style>
+    body {
+        font-family: Consolas, "Courier New", monospace;
+        background-color: #000000;
+        color: #00ff00;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h1 {
+        color: #00ff00;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .search-container {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .search-input {
+        width: 250px;
+        padding: 10px;
+        border: 1px solid #00ff00;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-right: 10px;
+        background-color: #000000;
+        color: #00ff00;
+    }
+
+    .search-btn {
+        padding: 10px 20px;
+        background-color: #00ff00;
+        color: #000000;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+        .search-btn:hover {
+            background-color: #007700;
+        }
+
+    p a {
+        padding: 10px 20px;
+        background-color: #00ff00;
+        color: #000000;
+        text-decoration: none;
+        border-radius: 4px;
+        font-size: 16px;
+        transition: background-color 0.3s;
+    }
+
+        p a:hover {
+            background-color: #007700;
+        }
+
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        background-color: #1b1b1b;
+        border: 1px solid #00ff00;
+        border-radius: 4px;
+    }
+
+        .table th, .table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #00ff00;
+        }
+
+        .table thead {
+            background-color: #000000;
+        }
+
+        .table tbody tr:nth-child(even) {
+            background-color: #1b1b1b;
+        }
+
+        .table tbody tr:hover {
+            background-color: #333333;
+        }
+
+        .table a {
+            color: #00ff00;
+            text-decoration: none;
+        }
+
+            .table a:hover {
+                text-decoration: underline;
+            }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+        ul li {
+            display: inline-block;
+        }
+
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        color: #000000;
+        background-color: #00ff00;
+        text-decoration: none;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+    }
+
+        .btn:hover {
+            background-color: #007700;
+        }
+
+    hr {
+        border: none;
+        border-top: 1px solid #00ff00;
+        margin: 20px 0;
+    }
+</style>
+
+<h1>Hello, you are Admin!</h1>
+
+<!-- Search container -->
+<div class="search-container">
+    <input type="text" id="searchInput" class="search-input" placeholder="Search by Name...">
+    <button onclick="search()" class="search-btn">Search</button>
+</div>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DoB)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Major)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DoB)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Major)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<ul>
+    <li><a class="btn btn-sm btn-primary" asp-controller="Admin" asp-action="Index">Back to HomePage</a></li>
+</ul>
+
+<script>
+    function search() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("searchInput");
+        filter = input.value.toUpperCase();
+        table = document.querySelector(".table");
+        tr = table.getElementsByTagName("tr");
+
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0]; // Search in the first column (Name column)
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>

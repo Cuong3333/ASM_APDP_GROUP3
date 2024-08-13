@@ -1,0 +1,131 @@
+﻿@model QLSVVV.Models.Course
+<style>
+    body {
+        font-family: Consolas, "Courier New", monospace;
+        margin: 0;
+        padding: 0;
+        background-color: #1b1b1b;
+        color: #00ff00;
+    }
+
+    .container {
+        width: 60%;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #1e1e1e;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        border-radius: 8px;
+        margin-top: 20px;
+    }
+
+    h1 {
+        text-align: center;
+        color: #00ff00;
+        margin-bottom: 20px;
+    }
+
+    h2 {
+        color: #00ff00;
+        border-bottom: 2px solid #00ff00;
+        padding-bottom: 5px;
+        margin-bottom: 10px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+
+    table, th, td {
+        border: 1px solid #00ff00;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #2a2a2a;
+    }
+
+    tr:nth-child(even) {
+        background-color: #2a2a2a;
+    }
+
+    tr:hover {
+        background-color: #3a3a3a;
+    }
+
+    form {
+        display: inline-block;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 16px;
+        color: #000;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        background-color: #00ff00;
+        transition: background-color 0.3s, color 0.3s;
+        cursor: pointer;
+    }
+
+    .btn-secondary {
+        background-color: #00ff00;
+    }
+
+        .btn-secondary:hover {
+            background-color: #007700;
+        }
+
+    .btn-danger {
+        background-color: #dc3545;
+    }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+        }
+
+    .btn-container {
+        text-align: center;
+        margin-top: 20px;
+    }
+</style>
+<div class="container">
+    <h1>View Course: @Model.Name</h1>
+
+    <h2>Students in this course</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var courseStudent in Model.CourseStudent)
+            {
+                <tr>
+                    <td>@courseStudent.Student.Id</td>
+                    <td>@courseStudent.Student.Name</td>
+                    <td>
+                        <form asp-action="RemoveStudentFromCourse" method="post">
+                            <input type="hidden" name="courseId" value="@Model.Id" />
+                            <input type="hidden" name="studentId" value="@courseStudent.Student.Id" />
+                            <button type="submit" class="btn btn-danger">Remove</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="btn-container">
+        <a asp-action="ViewCourseStudent" class="btn btn-secondary">Back to Course List</a>
+    </div>
+</div>

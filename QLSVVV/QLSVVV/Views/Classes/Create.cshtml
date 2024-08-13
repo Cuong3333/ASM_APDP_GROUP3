@@ -1,0 +1,133 @@
+﻿@model QLSVVV.Models.Class
+
+@{
+    ViewData["Title"] = "Create";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <style>
+        body {
+            font-family: "Courier New", Courier, monospace;
+            background-color: #000;
+            color: #00ff00;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 60%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #001100;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+            border-radius: 8px;
+        }
+
+        h1, h4 {
+            color: #00ff00;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #00ff00;
+            border-radius: 5px;
+            background-color: #002200;
+            color: #00ff00;
+            box-sizing: border-box;
+        }
+
+            .form-control::placeholder {
+                color: #00ff00;
+            }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #00ff00;
+            text-decoration: none;
+            border: 1px solid #00ff00;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: #003300;
+        }
+
+            .btn-primary:hover {
+                background-color: #002200;
+            }
+
+        .btn-secondary {
+            background-color: #003300;
+        }
+
+            .btn-secondary:hover {
+                background-color: #002200;
+            }
+
+        .text-danger {
+            color: #ff0000;
+        }
+
+        a {
+            color: #00ff00;
+            text-decoration: none;
+        }
+
+            a:hover {
+                text-decoration: underline;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Create</h1>
+        <h4>Class</h4>
+        <hr />
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" placeholder="Enter class name" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Major" class="control-label"></label>
+                <input asp-for="Major" class="form-control" placeholder="Enter major" />
+                <span asp-validation-for="Major" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lecturer" class="control-label"></label>
+                <input asp-for="Lecturer" class="form-control" placeholder="Enter lecturer name" />
+                <span asp-validation-for="Lecturer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+
+    <div class="container">
+        <a class="btn btn-secondary" asp-action="ManageClass">Back to List</a>
+    </div>
+
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+    }
+</body>
+</html>

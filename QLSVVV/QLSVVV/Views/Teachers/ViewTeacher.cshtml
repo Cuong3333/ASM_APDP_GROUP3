@@ -1,0 +1,179 @@
+﻿@model IEnumerable<QLSVVV.Models.Teacher>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Teacher List</title>
+    <style>
+        body {
+            font-family: "Courier New", Courier, monospace;
+            background-color: #000;
+            color: #00ff00;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #00ff00;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        
+
+        .search-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .search-input {
+            width: 250px;
+            padding: 10px;
+            border: 1px solid #00ff00;
+            border-radius: 4px;
+            background-color: #001100;
+            color: #00ff00;
+            margin-right: 10px;
+        }
+
+        .search-btn {
+            padding: 10px 20px;
+            background-color: #003300;
+            color: #00ff00;
+            border: 1px solid #00ff00;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+            .search-btn:hover {
+                background-color: #002200;
+            }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #001100;
+            border: 1px solid #00ff00;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+            .table th, .table td {
+                padding: 12px 15px;
+                text-align: left;
+                border-bottom: 1px solid #00ff00;
+            }
+
+            .table thead {
+                background-color: #002200;
+                color: #00ff00;
+            }
+
+            .table tbody tr:nth-child(even) {
+                background-color: #001100;
+            }
+
+            .table tbody tr:hover {
+                background-color: #003300;
+            }
+
+            .table a {
+                color: #00ff00;
+                text-decoration: none;
+            }
+
+                .table a:hover {
+                    text-decoration: underline;
+                }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            color: #00ff00;
+            background-color: #003300;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 20px;
+            text-align: center;
+            border: 1px solid #00ff00;
+        }
+
+            .btn:hover {
+                background-color: #002200;
+            }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+            ul li {
+                display: inline-block;
+            }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Teacher List, Student!</h1>
+
+    <!-- Search container -->
+    <div class="search-container">
+        <input type="text" id="searchInput" class="search-input" placeholder="Search by Name...">
+        <button onclick="search()" class="search-btn">Search</button>
+    </div>
+
+    <!-- Teacher table -->
+    <table class="table">
+        <!-- Table header -->
+        <thead>
+            <tr>
+                <th style="color: #00ff00">ID</th>
+                <th style="color: #00ff00">Name</th>
+                <th style="color: #00ff00">Date of Birth</th>
+                <th style="color: #00ff00">Major</th>
+            </tr>
+        </thead>
+        <!-- Table body -->
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td>@item.DoB</td>
+                    <td>@item.Major</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <!-- Back to HomePage button -->
+    <ul>
+        <li><a class="btn" asp-controller="Students" asp-action="Index">Back to HomePage</a></li>
+    </ul>
+
+    <script>
+        function search() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+            table = document.querySelector(".table");
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 1; i < tr.length; i++) { // Skip the header row
+                td = tr[i].getElementsByTagName("td")[1]; // Search in the second column (Name column)
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

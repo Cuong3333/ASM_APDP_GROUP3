@@ -1,0 +1,134 @@
+﻿@model QLSVVV.Models.Teacher
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<style>
+    body {
+        font-family: "Courier New", Courier, monospace;
+        background-color: #000;
+        color: #00ff00;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h1, h4 {
+        color: #00ff00;
+        text-align: center;
+    }
+
+    .row {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .col-md-4 {
+        background-color: #002200;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 255, 0, 0.1);
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .control-label {
+        font-weight: bold;
+        margin-bottom: 5px;
+        display: block;
+        color: #00ff00;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #00ff00;
+        border-radius: 4px;
+        box-sizing: border-box;
+        background-color: #000;
+        color: #00ff00;
+    }
+
+        .form-control:focus {
+            border-color: #00ff00;
+            box-shadow: 0 0 8px rgba(0, 255, 0, 0.25);
+        }
+
+    .text-danger {
+        color: #dc3545;
+        font-size: 0.9em;
+    }
+
+    .btn-primary {
+        background-color: #00ff00;
+        border-color: #00ff00;
+        color: #000;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        transition: background-color 0.3s;
+    }
+
+        .btn-primary:hover {
+            background-color: #005600;
+            color: #00ff00;
+        }
+
+    .form-actions {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    a {
+        color: #00ff00;
+        text-decoration: none;
+    }
+
+        a:hover {
+            color: #005600;
+        }
+</style>
+<h1>Edit</h1>
+
+<h4>Teacher</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DoB" class="control-label"></label>
+                <input asp-for="DoB" class="form-control" />
+                <span asp-validation-for="DoB" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Major" class="control-label"></label>
+                <input asp-for="Major" class="form-control" />
+                <span asp-validation-for="Major" class="text-danger"></span>
+            </div>
+            <div class="form-actions">
+                <input type="submit" value="Save" class="btn-primary" />
+                <a asp-action="ManageTeacher" class="btn-primary">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

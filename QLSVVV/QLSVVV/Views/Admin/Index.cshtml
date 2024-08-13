@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Main</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #000000;
+            color: #00ff00;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #000000;
+            color: #00ff00;
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #00ff00;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #000000;
+            color: #00ff00;
+            border: 1px solid #00ff00;
+            border-radius: 5px;
+        }
+
+        .nav {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-item {
+            margin: 10px 0;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #00ff00;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #00ff00;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: #000000;
+            color: #00ff00;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+            .btn:hover {
+                background-color: #00ff00;
+                color: #000000;
+            }
+
+        .logout-form {
+            display: flex;
+            justify-content: flex-end;
+            padding: 20px;
+        }
+
+            .logout-form button {
+                background-color: #ff0000;
+                color: #00ff00;
+                border: 1px solid #00ff00;
+                padding: 12px 25px;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+
+                .logout-form button:hover {
+                    background-color: #cc0000;
+                }
+
+        h1 {
+            color: #00ff00;
+            font-size: 32px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        ul {
+            background-color: #000000;
+            padding: 20px;
+            border-radius: 5px;
+            border: 1px solid #00ff00;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.1);
+        }
+
+        .nav-item {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Admin Main</h1>
+    </header>
+
+    <div class="container">
+        <form asp-controller="Authentication" asp-action="Logout" method="post" class="logout-form">
+            <button type="submit">Logout</button>
+            @Html.AntiForgeryToken()
+        </form>
+
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" asp-area="" asp-controller="Students" asp-action="ManageStudent">
+                    <button type="button" class="btn">Student Management</button>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-area="" asp-controller="Teachers" asp-action="ManageTeacher">
+                    <button type="button" class="btn">Teacher Management</button>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-area="" asp-controller="Courses" asp-action="ManageCourse">
+                    <button type="button" class="btn">Course Management</button>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-area="" asp-controller="Users" asp-action="Index">
+                    <button type="button" class="btn">Admin Management</button>
+                </a>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

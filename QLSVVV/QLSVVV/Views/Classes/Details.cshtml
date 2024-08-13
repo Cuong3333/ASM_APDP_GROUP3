@@ -1,0 +1,121 @@
+﻿@model QLSVVV.Models.Class
+
+@{
+    ViewData["Title"] = "Details";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <style>
+        body {
+            font-family: "Courier New", Courier, monospace;
+            background-color: #000;
+            color: #00ff00;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 60%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #003300;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+            border-radius: 8px;
+        }
+
+        h1, h4 {
+            color: #00ff00;
+            text-align: center;
+        }
+
+        dl.row {
+            margin-top: 20px;
+            color: #00ff00;
+        }
+
+        dt.col-sm-2 {
+            font-weight: bold;
+        }
+
+        dd.col-sm-10 {
+            margin-bottom: 10px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #00ff00;
+            text-decoration: none;
+            border: 1px solid #00ff00;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+            cursor: pointer;
+            margin: 5px;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: #003300;
+        }
+
+            .btn-primary:hover {
+                background-color: #004400;
+            }
+
+        .btn-secondary {
+            background-color: #003300;
+        }
+
+            .btn-secondary:hover {
+                background-color: #004400;
+            }
+
+        a {
+            color: #00ff00;
+            text-decoration: none;
+        }
+
+            a:hover {
+                text-decoration: underline;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Details</h1>
+
+        <div>
+            <h4>Class</h4>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Major)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Major)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Lecturer)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Lecturer)
+                </dd>
+            </dl>
+        </div>
+
+        <div style="text-align: center; margin-top: 20px;">
+            <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+            <a class="btn btn-secondary" asp-action="ManageClass">Back to List</a>
+        </div>
+    </div>
+</body>
+</html>

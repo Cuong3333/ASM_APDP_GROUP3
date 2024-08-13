@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Dashboard</title>
+    <style>
+        body {
+            font-family: Consolas, monospace; /* Font phong cách console */
+            background-color: #000; /* Nền đen */
+            color: #0f0; /* Màu chữ xanh lá cây */
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #003300; /* Nền đen-xanh */
+            color: #0f0; /* Màu chữ xanh lá cây */
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #002200; /* Nền đen-xanh */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.5); /* Đổ bóng xanh lá cây */
+        }
+
+        .nav {
+            list-style: none;
+            padding: 0;
+        }
+
+        .nav-item {
+            margin: 10px 0;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #0f0; /* Màu chữ xanh lá cây */
+            padding: 10px;
+            display: block;
+            background-color: #004400; /* Nền đen-xanh đậm */
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .nav-link:hover {
+            background-color: #006600; /* Nền đen-xanh sáng hơn khi hover */
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: #0f0; /* Nền xanh lá cây */
+            color: #000; /* Màu chữ đen */
+        }
+
+        .btn:hover {
+            background-color: #0a0; /* Nền xanh lá cây đậm hơn khi hover */
+        }
+
+        .logout-form {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .logout-form button {
+            background-color: #0f0; /* Nền xanh lá cây */
+            color: #000; /* Màu chữ đen */
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .logout-form button:hover {
+            background-color: #0a0; /* Nền xanh lá cây đậm hơn khi hover */
+        }
+
+        h1 {
+            color: #0f0; /* Màu chữ xanh lá cây */
+            text-align: center;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .list-group-item {
+            margin: 10px 0;
+        }
+
+        .list-group-item a {
+            text-decoration: none;
+            color: #0f0; /* Màu chữ xanh lá cây */
+            padding: 10px;
+            display: block;
+            background-color: #004400; /* Nền đen-xanh đậm */
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .list-group-item a:hover {
+            background-color: #006600; /* Nền đen-xanh sáng hơn khi hover */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Student Dashboard</h1>
+    </header>
+    <div class="container">
+        <form asp-controller="Authentication" asp-action="Logout" method="post" class="logout-form">
+            <button type="submit">Logout</button>
+            @Html.AntiForgeryToken()
+        </form>
+        <h1>Welcome To HomePage, Student!</h1>
+        <ul class="list-group">
+            <li class="list-group-item"><a href="@Url.Action("ViewClassStudent", "Classes")">View Classes</a></li>
+            <li class="list-group-item"><a href="@Url.Action("ViewTeacher", "Teachers")">View Teachers</a></li>
+            <li class="list-group-item"><a href="@Url.Action("ViewCourseStudent", "Courses")">View Courses</a></li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\btec\\4\\APDP\\Assignments\\ASM\\ASM_GROUP2\\QLSVVV\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{08C7F82E-2931-49FC-92EF-A92B1CC31139}|TestQLSV\\QLSVVV.Tests.csproj|d:\\btec\\4\\apdp\\assignments\\asm\\asm_group2\\qlsvvv\\testqlsv\\controllers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{08C7F82E-2931-49FC-92EF-A92B1CC31139}|TestQLSV\\QLSVVV.Tests.csproj|solutionrelative:testqlsv\\controllers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3BCCEAEF-5CD3-4453-9C19-F05DFC58A83C}|QLSVVV\\QLSVVV.csproj|d:\\btec\\4\\apdp\\assignments\\asm\\asm_group2\\qlsvvv\\qlsvvv\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3BCCEAEF-5CD3-4453-9C19-F05DFC58A83C}|QLSVVV\\QLSVVV.csproj|solutionrelative:qlsvvv\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Controllers.cs",
+              "DocumentMoniker": "D:\\btec\\4\\APDP\\Assignments\\ASM\\ASM_GROUP2\\QLSVVV\\TestQLSV\\Controllers.cs",
+              "RelativeDocumentMoniker": "TestQLSV\\Controllers.cs",
+              "ToolTip": "D:\\btec\\4\\APDP\\Assignments\\ASM\\ASM_GROUP2\\QLSVVV\\TestQLSV\\Controllers.cs",
+              "RelativeToolTip": "TestQLSV\\Controllers.cs",
+              "ViewState": "AQIAACwBAAAAAAAAAAAAAK8AAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-06T13:22:59.444Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "D:\\btec\\4\\APDP\\Assignments\\ASM\\ASM_GROUP2\\QLSVVV\\QLSVVV\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "QLSVVV\\Controllers\\UsersController.cs",
+              "ToolTip": "D:\\btec\\4\\APDP\\Assignments\\ASM\\ASM_GROUP2\\QLSVVV\\QLSVVV\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "QLSVVV\\Controllers\\UsersController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-06T12:40:07.933Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

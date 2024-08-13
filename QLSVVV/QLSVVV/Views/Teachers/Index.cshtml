@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Teacher Dashboard</title>
+    <style>
+        body {
+            font-family: "Courier New", Courier, monospace;
+            background-color: #000;
+            color: #00ff00;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #002200;
+            color: #00ff00;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #002200;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 255, 0, 0.1);
+        }
+
+        .nav {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .nav-item {
+            margin: 10px 0;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #00ff00;
+            display: block;
+            padding: 10px;
+            border: 1px solid #00ff00;
+            border-radius: 5px;
+        }
+
+        .nav-link:hover {
+            background-color: #005600;
+            color: #000;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .btn-logout {
+            background-color: #dc3545;
+            color: #fff;
+            margin: 20px 0;
+        }
+
+        .btn-logout:hover {
+            background-color: #c82333;
+        }
+
+        h1 {
+            color: #00ff00;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        ul {
+            background-color: #001100;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.1);
+            list-style: none;
+            margin: 0;
+        }
+
+        .list-group-item {
+            padding: 10px;
+            margin: 5px 0;
+            background-color: #001100;
+            border: 1px solid #00ff00;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .list-group-item a {
+            color: #00ff00;
+            text-decoration: none;
+        }
+
+        .list-group-item a:hover {
+            color: #005600;
+        }
+
+        .logout-form {
+            display: flex;
+            justify-content: flex-end;
+            padding: 10px;
+        }
+
+        .logout-form button {
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .logout-form button:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Welcome To HomePage, Teacher!</h1>
+    </header>
+    <div class="logout-form">
+        <form asp-controller="Authentication" asp-action="Logout" method="post">
+            @Html.AntiForgeryToken()
+            <button type="submit" class="btn btn-logout">Logout</button>
+        </form>
+    </div>
+    <div class="container">
+        <ul class="list-group">
+            <li class="list-group-item"><a class="nav-link" href="@Url.Action("ViewClass", "Classes")">View Classes</a></li>
+            <li class="list-group-item"><a class="nav-link" href="@Url.Action("ViewStudent", "Students")">View Students</a></li>
+            <li class="list-group-item"><a class="nav-link" href="@Url.Action("ViewCourse", "Courses")">View Courses</a></li>
+        </ul>
+    </div>
+</body>
+</html>

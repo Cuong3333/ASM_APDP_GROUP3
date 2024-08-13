@@ -1,0 +1,140 @@
+﻿@model QLSVVV.Models.User
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<style>
+    body {
+        font-family: 'Courier New', Courier, monospace;
+        background-color: #000000;
+        color: #00ff00;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h1, h4 {
+        color: #00ff00;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    h1 {
+        margin-bottom: 30px;
+    }
+
+    .row {
+        display: flex;
+        justify-content: center;
+    }
+
+    .col-md-4 {
+        background-color: #002200;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 255, 0, 0.3);
+        margin-top: 20px;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .control-label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #00ff00;
+        border-radius: 4px;
+        box-sizing: border-box;
+        background-color: #002200;
+        color: #00ff00;
+    }
+
+        .form-control:focus {
+            border-color: #00ff00;
+            box-shadow: 0 0 8px rgba(0, 255, 0, 0.5);
+        }
+
+    .text-danger {
+        color: #ff0000;
+        font-size: 0.9em;
+    }
+
+    .btn-primary {
+        background-color: #00ff00;
+        border: none;
+        color: #000000;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+    }
+
+        .btn-primary:hover {
+            background-color: #00cc00;
+        }
+
+    .form-actions {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    a {
+        color: #00ff00;
+        text-decoration: none;
+    }
+
+        a:hover {
+            text-decoration: underline;
+        }
+</style>
+
+<h1>Create</h1>
+
+<h4>User</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Role" class="control-label"></label>
+                <input asp-for="Role" class="form-control" />
+                <span asp-validation-for="Role" class="text-danger"></span>
+            </div>
+            <div class="form-group form-actions">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="form-actions">
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

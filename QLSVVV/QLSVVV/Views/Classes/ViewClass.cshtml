@@ -1,0 +1,178 @@
+﻿@model IEnumerable<Class>
+<style>
+    body {
+        font-family: Consolas, monospace; /* Đặt font monospace như phong cách console */
+        background-color: #000; /* Nền đen */
+        color: #0f0; /* Màu chữ xanh lá cây */
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        width: 80%;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #000; /* Nền đen cho container */
+        box-shadow: 0 0 10px rgba(0, 255, 0, 0.5); /* Đổ bóng màu xanh lá cây */
+        border-radius: 8px;
+        margin-top: 20px;
+    }
+
+    h1 {
+        text-align: center;
+        color: #0f0; /* Màu chữ xanh lá cây */
+        margin-bottom: 20px;
+    }
+
+    .search-container {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .search-input {
+        width: 300px;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #0f0; /* Viền xanh lá cây */
+        border-radius: 5px;
+        margin-right: 10px;
+        background-color: #000; /* Nền đen */
+        color: #0f0; /* Màu chữ xanh lá cây */
+    }
+
+    .search-btn {
+        padding: 10px 20px;
+        font-size: 16px;
+        color: #000; /* Màu chữ đen */
+        background-color: #0f0; /* Nền xanh lá cây */
+        border: 1px solid #0f0; /* Viền xanh lá cây */
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+        .search-btn:hover {
+            background-color: #0a0; /* Nền xanh lá cây đậm hơn khi hover */
+        }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+
+    table, th, td {
+        border: 1px solid #0f0; /* Viền xanh lá cây */
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #000; /* Nền đen cho header */
+        color: #0f0; /* Màu chữ xanh lá cây cho header */
+    }
+
+    tr:nth-child(even) {
+        background-color: #002200; /* Nền xanh đen nhạt cho các hàng chẵn */
+    }
+
+    tr:hover {
+        background-color: #003300; /* Nền xanh đen đậm hơn khi hover */
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 16px;
+        color: #000; /* Màu chữ đen */
+        background-color: #0f0; /* Nền xanh lá cây */
+        text-decoration: none;
+        border: 1px solid #0f0; /* Viền xanh lá cây */
+        border-radius: 5px;
+        transition: background-color 0.3s, color 0.3s;
+        cursor: pointer;
+    }
+
+    .btn-primary {
+        background-color: #0f0; /* Nền xanh lá cây */
+        color: #000; /* Màu chữ đen */
+    }
+
+        .btn-primary:hover {
+            background-color: #0a0; /* Nền xanh lá cây đậm hơn khi hover */
+        }
+
+    .btn-sm {
+        font-size: 14px;
+        padding: 5px 10px;
+    }
+
+    a {
+        color: #0f0; /* Màu chữ xanh lá cây */
+        text-decoration: none;
+    }
+
+        a:hover {
+            text-decoration: underline;
+        }
+</style>
+<body>
+    <h1>Welcome to Class List, Teacher!</h1>
+
+    <!-- Search container -->
+    <div class="search-container">
+        <input type="text" id="searchInput" class="search-input" placeholder="Search by Name...">
+        <button onclick="search()" class="search-btn">Search</button>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Major</th>
+                <th>Lecturer</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td>@item.Major</td>
+                    <td>@item.Lecturer</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <ul>
+        <li>
+            <a class="btn btn-sm btn-primary" asp-controller="Teachers" asp-action="Index">Back to HomePage</a>
+        </li>
+    </ul>
+</body>
+<script>
+    function search() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("searchInput");
+        filter = input.value.toUpperCase();
+        table = document.querySelector(".table");
+        tr = table.getElementsByTagName("tr");
+
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[1]; // Search in the second column (Name column)
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>

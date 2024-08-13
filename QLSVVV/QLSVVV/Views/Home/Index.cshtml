@@ -1,0 +1,112 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #0f0; /* Xanh lá cho văn bản */
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #222; /* Nền console */
+            border: 1px solid #0f0; /* Viền xanh lá */
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+            border-radius: 8px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #0f0; /* Xanh lá cho tiêu đề */
+            margin: 0;
+            padding: 10px;
+            border-bottom: 1px solid #0f0; /* Đường viền dưới tiêu đề */
+        }
+
+        h2 {
+            color: #0f0;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        .btn-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            margin: 5px;
+            border: 1px solid #0f0;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #0f0;
+            transition: background-color 0.3s, color 0.3s;
+            display: inline-block;
+        }
+
+            .btn:hover {
+                background-color: #0f0;
+                color: #000;
+            }
+
+        .course-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .course-item {
+            background-color: #333; /* Nền item */
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #444; /* Viền item */
+        }
+
+            .course-item h3 {
+                margin: 0;
+            }
+    </style>
+</head>
+<body>
+    <h1>SIMS</h1>
+
+    <div class="container">
+        <div class="btn-container">
+            <a class="btn" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+            <a class="btn" asp-area="" asp-controller="Home" asp-action="Privacy">About Us</a>
+            <a class="btn" asp-area="" asp-controller="Authentication" asp-action="Login">Log In</a>
+        </div>
+
+        <h2>About SIMS System</h2>
+        @* <p>SIMS System is a leading institution committed to providing the best quality education to students.</p> *@
+
+        <h2>List of Majors:</h2>
+        <ul class="course-list">
+            <li class="course-item">
+                <h3>APDP</h3>
+            </li>
+            <li class="course-item">
+                <h3>Coding Game</h3>
+            </li>
+            <li class="course-item">
+                <h3>BPS</h3>
+            </li>
+            <!-- Add more items as needed -->
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,137 @@
+﻿@model QLSVVV.Models.Course
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<style>
+    body {
+        font-family: Consolas, monospace;
+        background-color: #1b1b1b;
+        color: #00ff00;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        width: 80%;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #333;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        border-radius: 8px;
+        margin-top: 20px;
+    }
+
+    h1, h4 {
+        color: #00ff00;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #444;
+        border-radius: 5px;
+        background-color: #222;
+        color: #00ff00;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 16px;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        transition: background-color 0.3s, color 0.3s;
+        cursor: pointer;
+        color: #fff;
+    }
+
+    .btn-primary {
+        background-color: #0066cc;
+    }
+
+        .btn-primary:hover {
+            background-color: #004c99;
+        }
+
+    .text-danger {
+        color: #ff6666;
+    }
+
+    a {
+        color: #00ff00;
+        text-decoration: none;
+    }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+    .action-buttons {
+        display: flex;
+        justify-content: space-between;
+    }
+</style>
+
+<div class="container">
+    <h1>Edit Course: @Model.Name</h1>
+    <h4>Course</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Class" class="control-label"></label>
+                    <input asp-for="Class" class="form-control" />
+                    <span asp-validation-for="Class" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DateStart" class="control-label"></label>
+                    <input asp-for="DateStart" class="form-control" type="date" />
+                    <span asp-validation-for="DateStart" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DateEnd" class="control-label"></label>
+                    <input asp-for="DateEnd" class="form-control" type="date" />
+                    <span asp-validation-for="DateEnd" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Major" class="control-label"></label>
+                    <input asp-for="Major" class="form-control" />
+                    <span asp-validation-for="Major" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Lecturer" class="control-label"></label>
+                    <input asp-for="Lecturer" class="form-control" />
+                    <span asp-validation-for="Lecturer" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="action-buttons">
+        <a asp-action="ManageCourse" class="btn btn-secondary">Back To List</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

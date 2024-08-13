@@ -1,0 +1,107 @@
+﻿@model QLSVVV.Models.Teacher
+
+@{
+    ViewData["Title"] = "Details";
+}
+<style>
+    body {
+        font-family: "Courier New", Courier, monospace;
+        background-color: #000;
+        color: #00ff00;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h1 {
+        color: #00ff00;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .row {
+        display: flex;
+        justify-content: center;
+    }
+
+    .col-sm-2 {
+        font-weight: bold;
+        color: #00ff00;
+        padding: 10px 0;
+    }
+
+    .col-sm-10 {
+        padding: 10px 0;
+    }
+
+    dl {
+        background-color: #002200;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 255, 0, 0.1);
+    }
+
+    hr {
+        border: none;
+        border-top: 1px solid #00ff00;
+        margin: 20px 0;
+    }
+
+    a {
+        color: #00ff00;
+        text-decoration: none;
+    }
+
+        a:hover {
+            color: #005600;
+        }
+
+    .actions {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        color: #000;
+        background-color: #00ff00;
+        text-decoration: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+        .btn:hover {
+            background-color: #005600;
+        }
+</style>
+<h1>Details</h1>
+
+<div>
+    <h4>Teacher</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DoB)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DoB)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Major)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Major)
+        </dd>
+    </dl>
+</div>
+<div class="actions">
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn">Edit</a>
+    <a asp-action="ManageTeacher" class="btn">Back to List</a>
+</div>

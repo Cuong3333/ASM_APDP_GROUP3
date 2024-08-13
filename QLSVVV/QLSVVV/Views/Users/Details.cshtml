@@ -1,0 +1,110 @@
+﻿@model QLSVVV.Models.User
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<style>
+    body {
+        font-family: 'Courier New', Courier, monospace;
+        background-color: #000000;
+        color: #00ff00;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h1, h4 {
+        color: #00ff00;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .row {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .col-sm-2 {
+        font-weight: bold;
+        color: #00ff00;
+        padding: 10px 0;
+    }
+
+    .col-sm-10 {
+        padding: 10px 0;
+    }
+
+    dl {
+        background-color: #002200;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 255, 0, 0.3);
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    hr {
+        border: none;
+        border-top: 1px solid #00ff00;
+        margin: 20px 0;
+    }
+
+    a {
+        color: #00ff00;
+        text-decoration: none;
+        font-size: 16px;
+    }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+    .actions {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+        .actions a {
+            margin: 0 10px;
+            padding: 10px;
+            border-radius: 4px;
+            background-color: #004d00;
+            color: #00ff00;
+        }
+
+            .actions a:hover {
+                background-color: #003300;
+            }
+</style>
+
+<h1>Details</h1>
+
+<div>
+    <h4>User</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Role)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Role)
+        </dd>
+    </dl>
+</div>
+<div class="actions">
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
